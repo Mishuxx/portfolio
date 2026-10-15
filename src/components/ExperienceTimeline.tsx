@@ -93,7 +93,7 @@ const EXPERIENCES: TimelineItem[] = [
     role: "Recruiter & HR Management Specialist",
     company: "Bold Business",
     period: "Apr 2022 – Apr 2024",
-    location: "Remote / US Timezones",
+    location: "Remote",
     category: "recruitment",
     badge: "Operations & HR",
     badgeColor: "#3B82F6", // Blue

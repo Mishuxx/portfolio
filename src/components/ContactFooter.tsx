@@ -1,12 +1,10 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { 
   Copy, 
   Check, 
   Mail, 
-  MapPin, 
-  Clock, 
   ArrowUpRight, 
   Sparkles, 
   Globe, 
@@ -25,32 +23,8 @@ function LinkedInIcon({ className }: { className?: string }) {
 
 export default function ContactFooter() {
   const [copied, setCopied] = useState(false);
-  const [time, setTime] = useState<string>("");
   const email = "andrick712@gmail.com";
   const linkedinUrl = "https://www.linkedin.com/in/rickpm";
-
-  // Live Caracas Timezone (GMT-4) Clock
-  useEffect(() => {
-    const updateTime = () => {
-      try {
-        const now = new Date();
-        const formatter = new Intl.DateTimeFormat("en-US", {
-          timeZone: "America/Caracas",
-          hour: "2-digit",
-          minute: "2-digit",
-          second: "2-digit",
-          hour12: true,
-        });
-        setTime(formatter.format(now));
-      } catch (e) {
-        setTime("02:40:00 PM GMT-4");
-      }
-    };
-
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText(email);
@@ -65,7 +39,7 @@ export default function ContactFooter() {
         colors: ["#10B981", "#8B5CF6", "#06B6D4"],
       });
     } catch (e) {
-      // fallback if canvas-confetti is not loaded
+      // fallback
     }
 
     setTimeout(() => setCopied(false), 2500);
@@ -93,7 +67,7 @@ export default function ContactFooter() {
 
         {/* Subtitle */}
         <p className="mt-4 text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-          Whether you need advisory on gamified product architecture at Skillea, scaling high-tenure engineering teams, or consulting on human-centered cognitive systems.
+          Open for advisory on candidate talent evaluation, human behavioral systems, and product ideation at Skillea.
         </p>
 
         {/* Interactive Email Module */}
@@ -132,7 +106,7 @@ export default function ContactFooter() {
           </a>
         </div>
 
-        {/* Secondary Links & Socials */}
+        {/* Secondary Links & Badges (No Timezone, No Location) */}
         <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
           <a
             href={linkedinUrl}
@@ -146,14 +120,13 @@ export default function ContactFooter() {
           </a>
 
           <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5 text-zinc-300">
-            <MapPin className="w-4 h-4 text-emerald-400" />
-            <span>Caracas, Venezuela / Remote Global</span>
+            <Globe className="w-4 h-4 text-emerald-400" />
+            <span>Remote & Worldwide Collaboration</span>
           </div>
 
-          {/* Timezone Clock */}
           <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5 text-cyan-300">
-            <Clock className="w-4 h-4 text-cyan-400" />
-            <span>Caracas (GMT-4): {time || "Loading..."}</span>
+            <Sparkles className="w-4 h-4 text-cyan-400" />
+            <span>Direct Communication: Async & Sync</span>
           </div>
         </div>
 
@@ -165,7 +138,7 @@ export default function ContactFooter() {
           © 2026 Ricardo (Rick) Pulgar Mendoza. All rights reserved.
         </div>
         <div className="text-center sm:text-right">
-          Architected at the intersection of <span className="text-zinc-400">Psychology</span> & <span className="text-zinc-400">Digital Systems</span>.
+          Grounded in <span className="text-zinc-400">Clinical Psychology</span> & <span className="text-zinc-400">Human Systems</span>.
         </div>
       </div>
 

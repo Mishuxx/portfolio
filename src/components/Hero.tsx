@@ -55,7 +55,7 @@ export default function Hero() {
         <p className="mt-5 text-xs font-mono text-zinc-400 flex items-center gap-1.5">
           <span>Ricardo (Rick) Pulgar Mendoza</span>
           <span className="text-emerald-400">•</span>
-          <span className="text-zinc-300">Caracas, Venezuela</span>
+          <span className="text-zinc-300">Human Systems & Tech Talent</span>
         </p>
       </div>
 

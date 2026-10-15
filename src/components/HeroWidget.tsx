@@ -31,7 +31,7 @@ const NODES: NodeItem[] = [
     title: "Clinical Psychology",
     category: "psychology",
     status: "Solid Foundation",
-    level: "UCV Degree (Venezuela)",
+    level: "Licenciatura en Psicología (UCV)",
     metric: "Behavior & Cognitive Systems",
     description: "Deep academic and clinical training understanding how people communicate, process decisions, handle pressure, and stay motivated.",
     color: "#10B981", // Emerald
