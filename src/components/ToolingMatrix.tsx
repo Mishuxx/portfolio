@@ -33,33 +33,33 @@ const TOOLING_DATA: {
   items: ToolItem[];
 }[] = [
   {
-    category: "product",
-    title: "Product & Design",
-    icon: Compass,
-    color: "#8B5CF6", // Violet
-    description: "Frameworks for translating user psychology into scalable digital products.",
+    category: "talent",
+    title: "Talent & Recruiting (5+ Yrs)",
+    icon: Users,
+    color: "#06B6D4", // Cyan
+    description: "Core strength: Full-cycle IT hiring, candidate calibration, and pipeline operations.",
     items: [
-      { name: "Product Roadmapping", category: "product", proficiency: "Expert", note: "Milestone-driven release scoping" },
-      { name: "Information Architecture", category: "product", proficiency: "Expert", note: "Cognitive load optimization" },
-      { name: "Wireframing & UI Prototyping", category: "product", proficiency: "Advanced", note: "Rapid iterative validation" },
-      { name: "UX Behavioral Research", category: "product", proficiency: "Expert", note: "Qualitative & quantitative user studies" },
-      { name: "Gamification Loops", category: "product", proficiency: "Expert", note: "RPG progression & reward psychology" },
-      { name: "User Journey Mapping", category: "product", proficiency: "Expert", note: "Friction point elimination" },
+      { name: "Full-Cycle Technical Recruiting", category: "talent", proficiency: "Expert", note: "Canadian & US software engineering pipelines" },
+      { name: "ATS Platforms (Lever, Greenhouse, Ashby)", category: "talent", proficiency: "Expert", note: "Candidate flow tracking & QA" },
+      { name: "Sourcing & Boolean Search", category: "talent", proficiency: "Expert", note: "Targeted passive outreach across LatAm/US" },
+      { name: "Behavioral & Culture Fit Assessment", category: "talent", proficiency: "Expert", note: "Grounded in clinical psychology methods" },
+      { name: "Pipeline Reporting & SLAs", category: "talent", proficiency: "Advanced", note: "Hiring velocity and stage tracking" },
+      { name: "Candidate Experience", category: "talent", proficiency: "Expert", note: "Transparent, human-first communication" },
     ]
   },
   {
-    category: "talent",
-    title: "Talent & Operations",
-    icon: Users,
-    color: "#06B6D4", // Cyan
-    description: "Data-driven architectures for finding, screening, and closing tech talent.",
+    category: "product",
+    title: "Product & UX Exploration",
+    icon: Compass,
+    color: "#8B5CF6", // Violet
+    description: "Exploring digital product design, gamification, and user journeys at Skillea.",
     items: [
-      { name: "Full-Cycle Technical Recruiting", category: "talent", proficiency: "Expert", note: "Senior/Staff/Lead engineering roles" },
-      { name: "ATS Architecture (Lever, Greenhouse, Ashby)", category: "talent", proficiency: "Expert", note: "Pipeline stage calibration & QA" },
-      { name: "Sourcing Automation & Boolean", category: "talent", proficiency: "Expert", note: "Deep search strings & passive outreach" },
-      { name: "Behavioral & Culture Fit Assessment", category: "talent", proficiency: "Expert", note: "Clinical interview methodologies" },
-      { name: "HR Operations & Pipeline Analytics", category: "talent", proficiency: "Advanced", note: "SLA tracking, funnel metrics" },
-      { name: "Compensation Calibration", category: "talent", proficiency: "Advanced", note: "North American & LatAm market rates" },
+      { name: "Gamification Concepts", category: "product", proficiency: "Advanced", note: "Designing the Progress Tree RPG concept" },
+      { name: "User Journey & Personas", category: "product", proficiency: "Advanced", note: "Mapping candidate pain points" },
+      { name: "Wireframing & Flow Design", category: "product", proficiency: "Operational", note: "Learning & iterating in Figma/Miro" },
+      { name: "Product Scoping", category: "product", proficiency: "Operational", note: "Defining MVPs alongside developers" },
+      { name: "User Feedback Loops", category: "product", proficiency: "Advanced", note: "Listening to candidate & learner needs" },
+      { name: "Web Fundamentals (HTML/CSS/JS)", category: "product", proficiency: "Operational", note: "Actively learning to code and build" },
     ]
   },
   {
@@ -67,29 +67,27 @@ const TOOLING_DATA: {
     title: "AI & Productivity",
     icon: Cpu,
     color: "#10B981", // Emerald
-    description: "Human-in-the-loop workflows leveraging state-of-the-art Generative AI.",
+    description: "Everyday workflow automation and thoughtful AI exploration.",
     items: [
-      { name: "ChatGPT & Advanced Prompting", category: "ai", proficiency: "Expert", note: "Curriculum & scenario engineering" },
-      { name: "Microsoft Copilot & Workspace AI", category: "ai", proficiency: "Expert", note: "Enterprise workflow acceleration" },
-      { name: "AI Prompt Engineering", category: "ai", proficiency: "Expert", note: "Taxonomy extraction & candidate mapping" },
-      { name: "Workflow Automation (Zapier/Make)", category: "ai", proficiency: "Advanced", note: "ATS to CRM sync automation" },
-      { name: "Ethics & Governance in GenAI", category: "ai", proficiency: "Expert", note: "Bias mitigation & bioethical standards" },
-      { name: "Claude & Perplexity Research", category: "ai", proficiency: "Expert", note: "Technical market intelligence" },
+      { name: "ChatGPT & Prompt Crafting", category: "ai", proficiency: "Advanced", note: "Brainstorming, curriculum drafting & notes" },
+      { name: "Microsoft Copilot & Workspace AI", category: "ai", proficiency: "Advanced", note: "Sourcing summarization & communications" },
+      { name: "AI-Assisted Workflow Ideas", category: "ai", proficiency: "Operational", note: "Experimenting with recruiting automation" },
+      { name: "Ethics in AI & Human Agency", category: "ai", proficiency: "Advanced", note: "Bioethics research perspective" },
+      { name: "Research & Market Intel", category: "ai", proficiency: "Advanced", note: "Staying on top of tech industry shifts" },
     ]
   },
   {
     category: "management",
-    title: "Management & Collaboration",
+    title: "Collaboration & Ops",
     icon: MessageSquare,
     color: "#F59E0B", // Amber
-    description: "Orchestrating cross-functional teams with clarity and asynchronous velocity.",
+    description: "Keeping teams aligned through clear, organized, and friendly collaboration.",
     items: [
-      { name: "Slack & Async Communication", category: "management", proficiency: "Expert", note: "Clear, documentation-first culture" },
-      { name: "Asana & Trello", category: "management", proficiency: "Expert", note: "Sprint planning & task governance" },
-      { name: "Google Workspace & Docs", category: "management", proficiency: "Expert", note: "PRDs, specifications, and reports" },
-      { name: "CRM & Pipeline Management", category: "management", proficiency: "Advanced", note: "Client & partner relationship tracking" },
-      { name: "Notion & Knowledge Bases", category: "management", proficiency: "Expert", note: "Single-source-of-truth documentation" },
-      { name: "Figma (Review & Spec)", category: "management", proficiency: "Advanced", note: "Design handoff & UX calibration" },
+      { name: "Slack & Async Teamwork", category: "management", proficiency: "Advanced", note: "Clear, documentation-first communication" },
+      { name: "Asana & Trello", category: "management", proficiency: "Advanced", note: "Task tracking and milestone checklists" },
+      { name: "Google Workspace & Docs", category: "management", proficiency: "Advanced", note: "Structured interview rubrics & proposals" },
+      { name: "Notion", category: "management", proficiency: "Advanced", note: "Knowledge base & notes organization" },
+      { name: "Empathetic Active Listening", category: "management", proficiency: "Expert", note: "Psychology-rooted communication" },
     ]
   }
 ];

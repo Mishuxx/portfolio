@@ -13,26 +13,25 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ricardo (Rick) Pulgar Mendoza | CPO @ Skillea • Tech Recruiter • Psychologist",
+  title: "Ricardo (Rick) Pulgar Mendoza | Tech Recruiter • Psychologist • Co-Founder @ Skillea",
   description:
-    "At the intersection of Psychology, Talent, and Product Architecture — understanding human systems to build better digital systems and high-performing teams.",
+    "Personal portfolio of Ricardo (Rick) Pulgar Mendoza. Connecting clinical psychology, technical talent acquisition, and product exploration.",
   keywords: [
     "Ricardo Pulgar Mendoza",
     "Rick Pulgar",
     "Skillea",
-    "CPO",
-    "Product Architect",
     "Technical Recruiter",
     "Clinical Psychology",
     "Progress Tree",
-    "Gamification",
-    "Talent Architecture",
+    "Gamified Learning",
+    "Tech Talent",
+    "IT Recruitment",
   ],
   authors: [{ name: "Ricardo Pulgar Mendoza" }],
   openGraph: {
-    title: "Ricardo (Rick) Pulgar Mendoza — Human Systems & Digital Architecture",
+    title: "Ricardo (Rick) Pulgar Mendoza — Psychology, Talent & Product Exploration",
     description:
-      "Architecting digital products and high-performance teams through human behavioral psychology.",
+      "Connecting clinical psychology, tech talent acquisition, and digital product exploration.",
     type: "website",
     locale: "en_US",
   },

@@ -1,6 +1,7 @@
 "use client";
 
 import React from "react";
+import Image from "next/image";
 import { 
   Brain, 
   Eye, 
@@ -130,17 +131,22 @@ export default function PsychologyFoundation() {
         })}
       </div>
 
-      {/* Philosophy Quote Banner */}
+      {/* Human Philosophy Banner with Authentic Photo */}
       <div className="relative z-10 rounded-3xl bg-gradient-to-r from-emerald-950/20 via-zinc-900/60 to-violet-950/20 border border-white/10 p-6 sm:p-8 backdrop-blur-xl flex flex-col md:flex-row items-center gap-6">
-        <div className="p-4 rounded-2xl bg-white/[0.04] border border-white/10 shrink-0 text-emerald-400">
-          <Quote className="w-8 h-8" />
+        <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-2xl overflow-hidden shrink-0 border border-white/20 shadow-md bg-zinc-800">
+          <Image
+            src="/images/rick-outdoors.jpg"
+            alt="Ricardo Pulgar Mendoza grounded in nature"
+            fill
+            className="object-cover"
+          />
         </div>
-        <div className="space-y-1 text-center md:text-left">
+        <div className="space-y-1.5 text-center md:text-left">
           <p className="text-base sm:text-lg font-medium text-white leading-relaxed">
-            &ldquo;Code compiles deterministically, but teams and users operate on emotion, cognitive bias, and motivation. If you solve only for the algorithm, you will fail in production. Solve for the human mind first.&rdquo;
+            &ldquo;Code compiles deterministically, but teams and users operate on emotion, cognitive bias, and motivation. You can have the best tech stack in the world, but if you don&apos;t understand the human beings building it and using it, you miss the mark.&rdquo;
           </p>
           <p className="text-xs font-mono text-zinc-400">
-            — Ricardo (Rick) Pulgar Mendoza // Clinical Psychologist & Product Architect
+            — Ricardo (Rick) Pulgar Mendoza // Clinical Psychologist & Senior IT Recruiter
           </p>
         </div>
       </div>

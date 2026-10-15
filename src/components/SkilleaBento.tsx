@@ -98,18 +98,18 @@ export default function SkilleaBento() {
         <div className="flex flex-col lg:flex-row lg:items-end justify-between w-full gap-4">
           <div>
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
-              Skillea: The Progress Tree Engine
+              Skillea: The Progress Tree Concept
             </h2>
             <p className="mt-3 text-base sm:text-lg text-zinc-400 max-w-2xl">
-              Co-Founder & Chief Product Officer (CPO). Re-imagining career readiness through an RPG-inspired progression architecture grounded in human behavioral science.
+              Co-Founder & Product Lead. Concepting a gamified progression model inspired by RPG skill trees to help tech candidates visualize and develop career-ready skills through behavioral psychology.
             </p>
           </div>
           <div className="flex items-center gap-3">
             <span className="px-3 py-1.5 rounded-lg bg-white/[0.04] border border-white/10 text-xs font-mono text-zinc-300">
-              Role: Co-Founder & CPO
+              Role: Co-Founder & Product Lead
             </span>
             <span className="px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-300">
-              Status: Live & Scaling
+              In Development
             </span>
           </div>
         </div>
@@ -247,31 +247,31 @@ export default function SkilleaBento() {
         {/* Right Column (Cards B & C / 4 Cols) */}
         <div className="lg:col-span-4 flex flex-col gap-6">
           
-          {/* Card B: System Architecture */}
+          {/* Card B: Product & Learning Strategy */}
           <div className="rounded-3xl bg-[#0d121c]/80 border border-white/10 p-6 backdrop-blur-xl relative overflow-hidden flex-1 shadow-xl">
             <div className="flex items-center gap-2 mb-3">
               <div className="p-2 rounded-lg bg-cyan-500/10 border border-cyan-500/20 text-cyan-400">
                 <Cpu className="w-5 h-5" />
               </div>
-              <h4 className="text-lg font-bold text-white">System Architecture</h4>
+              <h4 className="text-lg font-bold text-white">Product & Learning Strategy</h4>
             </div>
 
             <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed mb-4">
-              Linking real-time user telemetry with adaptive progression pipelines. Every learner interaction feeds a low-latency feedback loop calibrated to maintain high agency.
+              Designing the bridge between candidate motivation and practical skills. Translating complex engineering job specifications into clear, achievable micro-milestones.
             </p>
 
             <div className="space-y-2.5">
               <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs">
-                <span className="font-mono text-cyan-400 block font-semibold mb-0.5">01 // Event Telemetry</span>
-                <span className="text-zinc-400">Tracking micro-hesitations, completion velocity, and conceptual gaps.</span>
+                <span className="font-mono text-cyan-400 block font-semibold mb-0.5">01 // Skill Tree Progression</span>
+                <span className="text-zinc-400">Visualizing learning as an RPG skill tree rather than overwhelming course playlists.</span>
               </div>
               <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs">
-                <span className="font-mono text-cyan-400 block font-semibold mb-0.5">02 // Adaptive Difficulty</span>
-                <span className="text-zinc-400">Dynamic milestone branching to maintain flow state and prevent learner burnout.</span>
+                <span className="font-mono text-cyan-400 block font-semibold mb-0.5">02 // Cognitive Engagement</span>
+                <span className="text-zinc-400">Pacing learning modules to prevent burnout and support steady retention.</span>
               </div>
               <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 text-xs">
-                <span className="font-mono text-cyan-400 block font-semibold mb-0.5">03 // AI Milestone Synthesis</span>
-                <span className="text-zinc-400">Real-time skill translation mapped to modern engineering vacancy requirements.</span>
+                <span className="font-mono text-cyan-400 block font-semibold mb-0.5">03 // Industry Relevance</span>
+                <span className="text-zinc-400">Connecting learning checkpoints directly to what tech teams actively look for.</span>
               </div>
             </div>
           </div>

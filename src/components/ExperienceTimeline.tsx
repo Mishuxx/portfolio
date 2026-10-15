@@ -33,22 +33,22 @@ interface TimelineItem {
 const EXPERIENCES: TimelineItem[] = [
   {
     id: "skillea",
-    role: "Co-Founder & Chief Product Officer (CPO) / Product Lead",
+    role: "Co-Founder & Product Lead",
     company: "Skillea",
     period: "Dec 2025 – Present",
     location: "Remote / Global",
     category: "product",
-    badge: "Founder & CPO",
+    badge: "Co-Founder & Product",
     badgeColor: "#8B5CF6", // Violet
     featured: true,
     description:
-      "Spearheading the holistic product roadmap, UX vision, and system architecture for an innovative vocational edtech platform.",
+      "Collaborating on the product vision, user experience narrative, and gamification ideas for an innovative vocational learning platform.",
     achievements: [
-      "Architected the flagship 'Progress Tree' gamified progression engine, mapping complex vocational readiness into RPG skill trees.",
-      "Integrated adaptive AI recommendation workflows linking live student telemetry with real North American job vacancy specs.",
-      "Established cognitive ergonomics guidelines, driving early retention metrics and high learner agency."
+      "Designed the core conceptual framework for the 'Progress Tree', bringing RPG skill tree inspiration into career readiness for developers.",
+      "Bridged recruiting insights with candidate empathy to map real job requirements into structured, approachable learning milestones.",
+      "Actively exploring frontend tools and collaborating closely with technical teammates to bring the vision to life."
     ],
-    skills: ["Product Strategy", "Gamification Architecture", "UX Systems", "AI Workflows", "Roadmapping", "Information Architecture"]
+    skills: ["Product Ideation", "Gamification Concepts", "UX Flows", "Recruiting Insights", "Continuous Learning"]
   },
   {
     id: "devengine",
