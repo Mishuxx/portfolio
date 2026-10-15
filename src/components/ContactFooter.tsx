@@ -9,7 +9,8 @@ import {
   Sparkles, 
   Globe, 
   ShieldCheck,
-  Send
+  Send,
+  FileDown
 } from "lucide-react";
 import confetti from "canvas-confetti";
 
@@ -117,6 +118,17 @@ export default function ContactFooter() {
             <LinkedInIcon className="w-4 h-4 text-[#0A66C2]" />
             <span>linkedin.com/in/rickpm</span>
             <ArrowUpRight className="w-3.5 h-3.5" />
+          </a>
+
+          <a
+            href="/Ricardo_Pulgar_CV.pdf"
+            download="Ricardo_Pulgar_CV.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-400 text-emerald-300 hover:text-white transition-all shadow-[0_0_15px_rgba(16,185,129,0.15)]"
+          >
+            <FileDown className="w-4 h-4 text-emerald-400" />
+            <span>Download Full CV (PDF)</span>
           </a>
 
           <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5 text-zinc-300">

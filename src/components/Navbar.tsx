@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Menu, X, Sparkles, Brain, Cpu, Users } from "lucide-react";
+import { ArrowUpRight, Menu, X, Sparkles, Brain, Cpu, Users, FileDown } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -78,6 +78,18 @@ export default function Navbar() {
             </div>
 
             <a
+              href="/Ricardo_Pulgar_CV.pdf"
+              download="Ricardo_Pulgar_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95"
+              title="Download Ricardo's CV in PDF"
+            >
+              <FileDown className="w-3.5 h-3.5 text-emerald-400" />
+              <span>CV</span>
+            </a>
+
+            <a
               href="#contact"
               className="relative group overflow-hidden rounded-xl px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-purple-600/30 border border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all hover:shadow-[0_0_22px_rgba(16,185,129,0.3)] active:scale-95"
             >
@@ -119,9 +131,21 @@ export default function Navbar() {
             ))}
 
             <a
+              href="/Ricardo_Pulgar_CV.pdf"
+              download="Ricardo_Pulgar_CV.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-2 w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/25 hover:bg-emerald-500/20 transition-all text-center"
+            >
+              <FileDown className="w-4 h-4 text-emerald-400" />
+              <span>Download CV (PDF)</span>
+            </a>
+
+            <a
               href="#contact"
               onClick={() => setMobileMenuOpen(false)}
-              className="mt-2 w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 transition-all text-center"
+              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 transition-all text-center"
             >
               Connect / Book Intro
               <ArrowUpRight className="w-4 h-4" />

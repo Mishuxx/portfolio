@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
-import { ArrowDown, Users, Sparkles, Heart, Coffee, ShieldCheck } from "lucide-react";
+import { ArrowDown, Users, Sparkles, Heart, Coffee, ShieldCheck, FileDown } from "lucide-react";
 import HeroWidget from "./HeroWidget";
 
 export default function Hero() {
@@ -97,7 +97,18 @@ export default function Hero() {
           className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-zinc-300 bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-white/20 transition-all duration-300 hover:text-white hover:scale-[1.02] active:scale-[0.98]"
         >
           <Users className="w-4 h-4 text-cyan-400" />
-          <span>Technical Recruiting Experience</span>
+          <span>Talent Architecture</span>
+        </a>
+
+        <a
+          href="/Ricardo_Pulgar_CV.pdf"
+          download="Ricardo_Pulgar_CV.pdf"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group inline-flex items-center gap-2.5 px-6 py-3.5 rounded-xl font-semibold text-sm text-emerald-300 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_0_20px_rgba(16,185,129,0.15)] transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+        >
+          <FileDown className="w-4 h-4 text-emerald-400 group-hover:translate-y-0.5 transition-transform" />
+          <span>Download CV (PDF)</span>
         </a>
       </div>
 
