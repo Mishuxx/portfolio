@@ -1,11 +1,13 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
-import { ArrowUpRight, Menu, X, Sparkles, Brain, Cpu, Users, FileDown } from "lucide-react";
+import { ArrowUpRight, Menu, X, Sparkles, Brain, Cpu, Users, FileDown, Globe } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,11 +18,11 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Product & Skillea", href: "#skillea", icon: Sparkles },
-    { name: "Technical Talent", href: "#talent", icon: Users },
-    { name: "Psychology Foundation", href: "#psychology", icon: Brain },
-    { name: "Experience", href: "#experience", icon: Cpu },
-    { name: "Contact", href: "#contact", icon: ArrowUpRight },
+    { name: t.nav.recruiting, href: "#recruiting", icon: Users },
+    { name: t.nav.skillea, href: "#skillea", icon: Sparkles },
+    { name: t.nav.psychology, href: "#psychology", icon: Brain },
+    { name: t.nav.experience, href: "#experience", icon: Cpu },
+    { name: t.nav.contact, href: "#contact", icon: ArrowUpRight },
   ];
 
   return (
@@ -28,15 +30,15 @@ export default function Navbar() {
       <nav
         className={`w-full max-w-7xl rounded-2xl border transition-all duration-300 ${
           scrolled
-            ? "bg-[#0c1017]/85 backdrop-blur-xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] py-3 px-5 md:px-7"
-            : "bg-[#0f141f]/60 backdrop-blur-md border-white/8 py-4 px-5 md:px-7"
+            ? "bg-[#0c1017]/90 backdrop-blur-xl border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.5)] py-3 px-4 sm:px-6 md:px-7"
+            : "bg-[#0f141f]/70 backdrop-blur-md border-white/8 py-3.5 sm:py-4 px-4 sm:px-6 md:px-7"
         }`}
       >
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-3">
           {/* Brand Monogram */}
           <a
             href="#"
-            className="group flex items-center gap-3 transition-transform hover:scale-[1.02]"
+            className="group flex items-center gap-3 transition-transform hover:scale-[1.02] shrink-0"
           >
             <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-400/20 via-teal-500/20 to-purple-600/30 border border-white/10 group-hover:border-emerald-400/40 transition-colors">
               <span className="font-mono font-bold text-sm tracking-tighter text-white">
@@ -47,12 +49,12 @@ export default function Navbar() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
             </div>
-            <div className="flex flex-col">
+            <div className="hidden sm:flex flex-col">
               <span className="text-sm font-semibold tracking-tight text-white group-hover:text-emerald-300 transition-colors">
                 Ricardo Pulgar
               </span>
               <span className="text-[10px] text-zinc-400 font-mono tracking-wider uppercase">
-                Product • Talent • Psychology
+                Recruiting • Skillea • Psychology
               </span>
             </div>
           </a>
@@ -70,44 +72,73 @@ export default function Navbar() {
             ))}
           </div>
 
-          {/* Right Status Badge & CTA */}
-          <div className="hidden sm:flex items-center gap-3">
+          {/* Right Status Badge, Language Switcher, CV & CTA */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            {/* Status pill (Desktop XL) */}
             <div className="hidden xl:flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[11px] font-mono text-emerald-300">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Available for Advisory & Select Roles</span>
+              <span>{t.nav.statusPill}</span>
             </div>
 
+            {/* Language Toggle EN / ES */}
+            <div className="flex items-center rounded-xl bg-white/[0.04] border border-white/10 p-0.5 font-mono text-xs text-zinc-300 shadow-inner">
+              <button
+                onClick={() => setLanguage("en")}
+                className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all ${
+                  language === "en"
+                    ? "bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 shadow-sm"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+                aria-label="Switch to English"
+              >
+                EN
+              </button>
+              <button
+                onClick={() => setLanguage("es")}
+                className={`px-2 py-1 rounded-lg text-[11px] font-bold transition-all ${
+                  language === "es"
+                    ? "bg-emerald-500/30 text-emerald-300 border border-emerald-500/40 shadow-sm"
+                    : "text-zinc-400 hover:text-white"
+                }`}
+                aria-label="Cambiar a Español"
+              >
+                ES
+              </button>
+            </div>
+
+            {/* CV Download Button */}
             <a
               href="/Ricardo_Pulgar_CV.pdf"
               download="Ricardo_Pulgar_CV.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-xs font-mono text-zinc-300 hover:text-white transition-all active:scale-95"
+              className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white/[0.04] hover:bg-white/[0.08] border border-white/10 hover:border-emerald-500/40 text-xs font-mono text-zinc-200 hover:text-white transition-all active:scale-95"
               title="Download Ricardo's CV in PDF"
             >
               <FileDown className="w-3.5 h-3.5 text-emerald-400" />
-              <span>CV</span>
+              <span>{t.nav.cv}</span>
             </a>
 
+            {/* Connect CTA */}
             <a
               href="#contact"
-              className="relative group overflow-hidden rounded-xl px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-purple-600/30 border border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all hover:shadow-[0_0_22px_rgba(16,185,129,0.3)] active:scale-95"
+              className="hidden md:inline-flex relative group overflow-hidden rounded-xl px-4 py-2 text-xs font-semibold text-white bg-gradient-to-r from-emerald-500/20 via-teal-500/20 to-purple-600/30 border border-emerald-500/30 hover:border-emerald-400/60 shadow-[0_0_15px_rgba(16,185,129,0.15)] transition-all hover:shadow-[0_0_22px_rgba(16,185,129,0.3)] active:scale-95"
             >
               <span className="flex items-center gap-1.5">
-                Connect / Intro
+                {t.nav.connectIntro}
                 <ArrowUpRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
               </span>
             </a>
-          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="lg:hidden p-2 rounded-lg bg-white/5 border border-white/10 text-zinc-300 hover:text-white"
-            aria-label="Toggle Navigation Menu"
-          >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-          </button>
+            {/* Mobile Menu Button */}
+            <button
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              className="lg:hidden p-2 rounded-lg bg-white/5 border border-white/10 text-zinc-300 hover:text-white"
+              aria-label="Toggle Navigation Menu"
+            >
+              {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Dropdown Menu */}
@@ -115,7 +146,7 @@ export default function Navbar() {
           <div className="lg:hidden mt-4 pt-4 border-t border-white/10 flex flex-col gap-2">
             <div className="flex items-center gap-2 px-3 py-2 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-xs font-mono text-emerald-300 mb-2">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
-              <span>Available for Strategic Advisory</span>
+              <span>{t.nav.statusPill}</span>
             </div>
 
             {navLinks.map((link) => (
@@ -139,7 +170,7 @@ export default function Navbar() {
               className="mt-2 w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-mono font-semibold text-emerald-300 bg-emerald-500/10 border border-emerald-500/25 hover:bg-emerald-500/20 transition-all text-center"
             >
               <FileDown className="w-4 h-4 text-emerald-400" />
-              <span>Download CV (PDF)</span>
+              <span>{t.contact.downloadCvBtn}</span>
             </a>
 
             <a
@@ -147,7 +178,7 @@ export default function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-xs font-semibold text-white bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 transition-all text-center"
             >
-              Connect / Book Intro
+              {t.nav.connectIntro}
               <ArrowUpRight className="w-4 h-4" />
             </a>
           </div>

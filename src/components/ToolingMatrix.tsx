@@ -1,151 +1,82 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import { 
   Wrench, 
-  Sparkles, 
-  Layers, 
-  Workflow, 
-  Cpu, 
   Users, 
-  Share2, 
-  Compass, 
-  CheckCircle2, 
   Terminal, 
-  ShieldCheck, 
+  Cpu, 
   MessageSquare,
-  Search
+  Check
 } from "lucide-react";
-
-interface ToolItem {
-  name: string;
-  category: "product" | "talent" | "ai" | "management";
-  proficiency: "Expert" | "Advanced" | "Operational";
-  note: string;
-}
-
-const TOOLING_DATA: {
-  category: "product" | "talent" | "ai" | "management";
-  title: string;
-  icon: React.ElementType;
-  color: string;
-  description: string;
-  items: ToolItem[];
-}[] = [
-  {
-    category: "talent",
-    title: "Talent & Recruiting (5+ Yrs)",
-    icon: Users,
-    color: "#06B6D4", // Cyan
-    description: "Core strength: Full-cycle IT hiring, candidate calibration, and pipeline operations.",
-    items: [
-      { name: "Full-Cycle Technical Recruiting", category: "talent", proficiency: "Expert", note: "Canadian & US software engineering pipelines" },
-      { name: "ATS Platforms (Lever, Greenhouse, Ashby)", category: "talent", proficiency: "Expert", note: "Candidate flow tracking & QA" },
-      { name: "Sourcing & Boolean Search", category: "talent", proficiency: "Expert", note: "Targeted passive outreach across LatAm/US" },
-      { name: "Behavioral & Culture Fit Assessment", category: "talent", proficiency: "Expert", note: "Grounded in clinical psychology methods" },
-      { name: "Pipeline Reporting & SLAs", category: "talent", proficiency: "Advanced", note: "Hiring velocity and stage tracking" },
-      { name: "Candidate Experience", category: "talent", proficiency: "Expert", note: "Transparent, human-first communication" },
-    ]
-  },
-  {
-    category: "product",
-    title: "Product & UX Exploration",
-    icon: Compass,
-    color: "#8B5CF6", // Violet
-    description: "Exploring digital product design, gamification, and user journeys at Skillea.",
-    items: [
-      { name: "Gamification Concepts", category: "product", proficiency: "Advanced", note: "Designing the Progress Tree RPG concept" },
-      { name: "User Journey & Personas", category: "product", proficiency: "Advanced", note: "Mapping candidate pain points" },
-      { name: "Wireframing & Flow Design", category: "product", proficiency: "Operational", note: "Learning & iterating in Figma/Miro" },
-      { name: "Product Scoping", category: "product", proficiency: "Operational", note: "Defining MVPs alongside developers" },
-      { name: "User Feedback Loops", category: "product", proficiency: "Advanced", note: "Listening to candidate & learner needs" },
-      { name: "Web Fundamentals (HTML/CSS/JS)", category: "product", proficiency: "Operational", note: "Actively learning to code and build" },
-    ]
-  },
-  {
-    category: "ai",
-    title: "AI & Productivity",
-    icon: Cpu,
-    color: "#10B981", // Emerald
-    description: "Everyday workflow automation and thoughtful AI exploration.",
-    items: [
-      { name: "ChatGPT & Prompt Crafting", category: "ai", proficiency: "Advanced", note: "Brainstorming, curriculum drafting & notes" },
-      { name: "Microsoft Copilot & Workspace AI", category: "ai", proficiency: "Advanced", note: "Sourcing summarization & communications" },
-      { name: "AI-Assisted Workflow Ideas", category: "ai", proficiency: "Operational", note: "Experimenting with recruiting automation" },
-      { name: "Ethics in AI & Human Agency", category: "ai", proficiency: "Advanced", note: "Bioethics research perspective" },
-      { name: "Research & Market Intel", category: "ai", proficiency: "Advanced", note: "Staying on top of tech industry shifts" },
-    ]
-  },
-  {
-    category: "management",
-    title: "Collaboration & Ops",
-    icon: MessageSquare,
-    color: "#F59E0B", // Amber
-    description: "Keeping teams aligned through clear, organized, and friendly collaboration.",
-    items: [
-      { name: "Slack & Async Teamwork", category: "management", proficiency: "Advanced", note: "Clear, documentation-first communication" },
-      { name: "Asana & Trello", category: "management", proficiency: "Advanced", note: "Task tracking and milestone checklists" },
-      { name: "Google Workspace & Docs", category: "management", proficiency: "Advanced", note: "Structured interview rubrics & proposals" },
-      { name: "Notion", category: "management", proficiency: "Advanced", note: "Knowledge base & notes organization" },
-      { name: "Empathetic Active Listening", category: "management", proficiency: "Expert", note: "Psychology-rooted communication" },
-    ]
-  }
-];
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function ToolingMatrix() {
-  const [searchQuery, setSearchQuery] = useState("");
+  const { t } = useLanguage();
+
+  const columns = [
+    {
+      title: t.skills.col1Title,
+      subtitle: t.skills.col1Subtitle,
+      icon: Users,
+      color: "#06B6D4", // Cyan
+      skills: t.skills.col1Skills,
+    },
+    {
+      title: t.skills.col2Title,
+      subtitle: t.skills.col2Subtitle,
+      icon: Terminal,
+      color: "#10B981", // Emerald
+      skills: t.skills.col2Skills,
+    },
+    {
+      title: t.skills.col3Title,
+      subtitle: t.skills.col3Subtitle,
+      icon: Cpu,
+      color: "#8B5CF6", // Violet
+      skills: t.skills.col3Skills,
+    },
+    {
+      title: t.skills.col4Title,
+      subtitle: t.skills.col4Subtitle,
+      icon: MessageSquare,
+      color: "#F59E0B", // Amber
+      skills: t.skills.col4Skills,
+    },
+  ];
 
   return (
-    <section id="tooling" className="relative py-20 md:py-28 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+    <section id="skills" className="relative py-16 md:py-24 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
       
       {/* Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 font-mono text-xs mb-3">
-            <Wrench className="w-3.5 h-3.5" />
-            <span>TOOLING & METHODOLOGY MATRIX</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
-            Systematic competencies across Product, Talent & AI.
-          </h2>
-          <p className="mt-3 text-base text-zinc-400 max-w-2xl">
-            A battle-tested stack combining product architecture rigor, advanced candidate intelligence, and modern AI automation.
-          </p>
+      <div className="flex flex-col items-start mb-12">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 font-mono text-xs mb-3">
+          <Wrench className="w-3.5 h-3.5" />
+          <span>TOOLING & METHODOLOGY</span>
         </div>
-
-        {/* Search Bar */}
-        <div className="relative w-full md:w-72">
-          <Search className="w-4 h-4 text-zinc-500 absolute left-3.5 top-1/2 -translate-y-1/2" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Search methodology..."
-            aria-label="Search methodology..."
-            className="w-full pl-10 pr-4 py-2 text-xs font-mono rounded-xl bg-white/[0.03] border border-white/10 text-white placeholder-zinc-500 focus:outline-none focus:border-violet-500/50 transition-colors"
-          />
-        </div>
+        <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-white">
+          {t.skills.headline}
+        </h2>
+        <p className="mt-3 text-base text-zinc-400 max-w-2xl">
+          {t.skills.subheadline}
+        </p>
       </div>
 
-      {/* 4 Category Columns */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {TOOLING_DATA.map((col) => {
+      {/* 4 Category Columns - No search box, no level badges, full subtitles without truncation */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {columns.map((col, cIdx) => {
           const Icon = col.icon;
-          const filteredItems = col.items.filter((item) =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-            item.note.toLowerCase().includes(searchQuery.toLowerCase())
-          );
 
           return (
             <div
-              key={col.category}
-              className="rounded-3xl bg-[#0d121c]/80 border border-white/10 p-6 backdrop-blur-xl flex flex-col justify-between hover:border-white/20 transition-all duration-300"
+              key={cIdx}
+              className="rounded-3xl bg-[#0d121c]/80 border border-white/10 p-6 backdrop-blur-xl flex flex-col justify-between hover:border-white/20 transition-all duration-300 shadow-lg"
             >
               <div>
                 {/* Column Header */}
-                <div className="flex items-center gap-2.5 pb-4 mb-4 border-b border-white/10">
+                <div className="flex items-start gap-3 pb-4 mb-4 border-b border-white/10">
                   <div
-                    className="p-2.5 rounded-xl border"
+                    className="p-2.5 rounded-xl border shrink-0 mt-0.5"
                     style={{
                       backgroundColor: `${col.color}15`,
                       borderColor: `${col.color}35`,
@@ -156,49 +87,33 @@ export default function ToolingMatrix() {
                   </div>
                   <div>
                     <h3 className="text-base font-bold text-white">{col.title}</h3>
-                    <p className="text-[11px] text-zinc-400 line-clamp-1">{col.description}</p>
+                    {/* Full subtitle - no truncate or line-clamp */}
+                    <p className="text-xs text-zinc-400 mt-0.5 leading-relaxed">
+                      {col.subtitle}
+                    </p>
                   </div>
                 </div>
 
-                {/* Items */}
-                <div className="space-y-2.5">
-                  {filteredItems.length === 0 ? (
-                    <div className="text-xs font-mono text-zinc-500 py-4 text-center">
-                      No matching tools
-                    </div>
-                  ) : (
-                    filteredItems.map((item, idx) => (
-                      <div
-                        key={idx}
-                        className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 hover:bg-white/[0.04] transition-colors"
-                      >
-                        <div className="flex items-center justify-between gap-1 mb-1">
-                          <span className="text-xs font-semibold text-zinc-200">
-                            {item.name}
-                          </span>
-                          <span
-                            className="text-[9px] font-mono px-1.5 py-0.5 rounded border"
-                            style={{
-                              backgroundColor: `${col.color}10`,
-                              borderColor: `${col.color}30`,
-                              color: col.color,
-                            }}
-                          >
-                            {item.proficiency}
-                          </span>
-                        </div>
-                        <p className="text-[11px] text-zinc-400 leading-snug">
-                          {item.note}
-                        </p>
-                      </div>
-                    ))
-                  )}
-                </div>
+                {/* Items List - No level badges, clean readable layout */}
+                <ul className="space-y-2.5">
+                  {col.skills.map((skill, sIdx) => (
+                    <li
+                      key={sIdx}
+                      className="p-2.5 rounded-xl bg-white/[0.02] border border-white/5 hover:border-white/15 hover:bg-white/[0.04] transition-colors flex items-center gap-2"
+                    >
+                      <Check className="w-3.5 h-3.5 shrink-0" style={{ color: col.color }} />
+                      <span className="text-xs font-medium text-zinc-200 leading-snug">
+                        {skill}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <div className="mt-5 pt-3 border-t border-white/5 text-[10px] font-mono text-zinc-400 flex items-center justify-between">
-                <span>{filteredItems.length} methodologies</span>
-                <span style={{ color: col.color }}>● Verified</span>
+              {/* Bottom Count Pill */}
+              <div className="mt-6 pt-3 border-t border-white/5 text-[11px] font-mono text-zinc-400 flex items-center justify-between">
+                <span>{col.skills.length} competencies</span>
+                <span className="w-1.5 h-1.5 rounded-full" style={{ backgroundColor: col.color }} />
               </div>
             </div>
           );

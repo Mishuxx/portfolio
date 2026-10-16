@@ -8,11 +8,11 @@ import {
   ArrowUpRight, 
   Sparkles, 
   Globe, 
-  ShieldCheck,
   Send,
   FileDown
 } from "lucide-react";
 import confetti from "canvas-confetti";
+import { useLanguage } from "@/context/LanguageContext";
 
 function LinkedInIcon({ className }: { className?: string }) {
   return (
@@ -23,6 +23,7 @@ function LinkedInIcon({ className }: { className?: string }) {
 }
 
 export default function ContactFooter() {
+  const { t } = useLanguage();
   const [copied, setCopied] = useState(false);
   const email = "andrick712@gmail.com";
   const linkedinUrl = "https://www.linkedin.com/in/rickpm";
@@ -31,7 +32,6 @@ export default function ContactFooter() {
     navigator.clipboard.writeText(email);
     setCopied(true);
     
-    // Trigger celebratory confetti burst
     try {
       confetti({
         particleCount: 40,
@@ -47,7 +47,7 @@ export default function ContactFooter() {
   };
 
   return (
-    <footer id="contact" className="relative pt-24 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 mt-20">
+    <footer id="contact" className="relative pt-20 pb-12 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto border-t border-white/10 mt-12">
       
       {/* Background Glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-b from-emerald-500/10 via-violet-500/10 to-transparent rounded-full blur-3xl pointer-events-none" />
@@ -55,20 +55,20 @@ export default function ContactFooter() {
       {/* Main CTA Container */}
       <div className="rounded-3xl bg-gradient-to-b from-[#121826]/90 to-[#0a0d14]/90 border border-white/10 p-8 sm:p-12 md:p-16 backdrop-blur-2xl relative overflow-hidden text-center mb-16 shadow-2xl">
         
-        {/* Availability Pill */}
+        {/* Eyebrow Pill */}
         <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 font-mono text-xs mb-6">
           <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>Available for strategic advisory & select roles</span>
+          <span>{t.contact.eyebrow}</span>
         </div>
 
         {/* Headline */}
         <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white max-w-3xl mx-auto leading-tight">
-          Let&apos;s build products and teams that <span className="text-gradient-dual">scale together.</span>
+          {t.contact.headline}
         </h2>
 
-        {/* Subtitle */}
+        {/* Body */}
         <p className="mt-4 text-sm sm:text-base md:text-lg text-zinc-300 max-w-2xl mx-auto leading-relaxed">
-          Open for advisory on candidate talent evaluation, human behavioral systems, and product ideation at Skillea.
+          {t.contact.body}
         </p>
 
         {/* Interactive Email Module */}
@@ -87,12 +87,12 @@ export default function ContactFooter() {
               {copied ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-black" />
-                  <span className="text-black">Copied!</span>
+                  <span className="text-black">{t.contact.copiedBtn}</span>
                 </>
               ) : (
                 <>
                   <Copy className="w-3.5 h-3.5" />
-                  <span>Copy</span>
+                  <span>{t.contact.copyBtn}</span>
                 </>
               )}
             </button>
@@ -103,12 +103,12 @@ export default function ContactFooter() {
             className="w-full sm:w-auto px-6 py-3 rounded-2xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 font-semibold text-xs sm:text-sm text-white flex items-center justify-center gap-2 transition-all shadow-[0_0_20px_rgba(16,185,129,0.25)] hover:shadow-[0_0_30px_rgba(16,185,129,0.4)] shrink-0"
           >
             <Send className="w-4 h-4" />
-            <span>Send Email</span>
+            <span>{t.contact.emailBtn}</span>
           </a>
         </div>
 
-        {/* Secondary Links & Badges (No Timezone, No Location) */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-4 text-xs font-mono text-zinc-400">
+        {/* Secondary Links & Badges */}
+        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4 text-xs font-mono text-zinc-400">
           <a
             href={linkedinUrl}
             target="_blank"
@@ -128,29 +128,24 @@ export default function ContactFooter() {
             className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-emerald-500/10 border border-emerald-500/30 hover:border-emerald-400 text-emerald-300 hover:text-white transition-all shadow-[0_0_15px_rgba(16,185,129,0.15)]"
           >
             <FileDown className="w-4 h-4 text-emerald-400" />
-            <span>Download Full CV (PDF)</span>
+            <span>{t.contact.downloadCvBtn}</span>
           </a>
 
           <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5 text-zinc-300">
             <Globe className="w-4 h-4 text-emerald-400" />
-            <span>Remote & Worldwide Collaboration</span>
-          </div>
-
-          <div className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-white/[0.03] border border-white/5 text-cyan-300">
-            <Sparkles className="w-4 h-4 text-cyan-400" />
-            <span>Direct Communication: Async & Sync</span>
+            <span>{t.contact.footerNote}</span>
           </div>
         </div>
 
       </div>
 
-      {/* Bottom Copyright & Design Credit */}
+      {/* Bottom Copyright */}
       <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-zinc-500 pt-6 border-t border-white/5">
         <div>
-          © 2026 Ricardo (Rick) Pulgar Mendoza. All rights reserved.
+          © 2026 {t.contact.allRightsReserved}
         </div>
         <div className="text-center sm:text-right">
-          Grounded in <span className="text-zinc-400">Clinical Psychology</span> & <span className="text-zinc-400">Human Systems</span>.
+          {t.contact.footerNote}
         </div>
       </div>
 

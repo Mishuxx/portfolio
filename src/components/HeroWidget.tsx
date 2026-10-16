@@ -6,47 +6,28 @@ import {
   Brain, 
   Users, 
   Code, 
-  Layers,
-  Activity,
-  Sparkles
+  Activity
 } from "lucide-react";
+import { useLanguage } from "@/context/LanguageContext";
 
 interface NodeItem {
-  id: string;
-  title: string;
-  category: "psychology" | "talent" | "product" | "learning";
-  status: "Solid Foundation" | "5+ Years Track Record" | "In Active Development" | "Hands-on Learning";
-  level: string;
-  metric: string;
-  description: string;
+  id: "recruiting" | "psychology" | "skillea" | "productCode";
   color: string;
   icon: React.ElementType;
   x: number;
   y: number;
 }
 
-const NODES: NodeItem[] = [
+const NODE_POSITIONS: NodeItem[] = [
   {
-    id: "cognition",
-    title: "Clinical Psychology",
-    category: "psychology",
-    status: "Solid Foundation",
-    level: "Licenciatura en Psicología (UCV)",
-    metric: "Behavior & Cognitive Systems",
-    description: "Deep academic and clinical training understanding how people communicate, process decisions, handle pressure, and stay motivated.",
+    id: "psychology",
     color: "#10B981", // Emerald
     icon: Brain,
     x: 50,
     y: 78,
   },
   {
-    id: "talent",
-    title: "Technical Talent Recruiting",
-    category: "talent",
-    status: "5+ Years Track Record",
-    level: "Full-Cycle IT Hiring",
-    metric: "Devengine • IT Bootcamp • Bold",
-    description: "5+ years screening software developers, managing ATS pipelines, and matching engineers with startups and Canadian/US tech teams.",
+    id: "recruiting",
     color: "#06B6D4", // Cyan
     icon: Users,
     x: 24,
@@ -54,25 +35,13 @@ const NODES: NodeItem[] = [
   },
   {
     id: "skillea",
-    title: "Skillea Progress Tree",
-    category: "product",
-    status: "In Active Development",
-    level: "Co-Founder & Product Lead",
-    metric: "Gamified Vocational Concept",
-    description: "Designing the Progress Tree — bringing RPG skill tree inspiration and learning psychology into career development for tech candidates.",
     color: "#8B5CF6", // Violet
     icon: GitBranch,
     x: 76,
     y: 42,
   },
   {
-    id: "learning-code",
-    title: "Product & Code Exploration",
-    category: "learning",
-    status: "Hands-on Learning",
-    level: "Active Growth",
-    metric: "UI/UX • Prototyping • Code",
-    description: "Actively expanding into digital product building, wireframing, and modern web technologies to speak the language of engineering fluently.",
+    id: "productCode",
     color: "#F59E0B", // Amber
     icon: Code,
     x: 50,
@@ -81,8 +50,11 @@ const NODES: NodeItem[] = [
 ];
 
 export default function HeroWidget() {
-  const [activeNodeId, setActiveNodeId] = useState<string>("skillea");
-  const activeNode = NODES.find((n) => n.id === activeNodeId) || NODES[2];
+  const { t } = useLanguage();
+  const [activeNodeId, setActiveNodeId] = useState<"recruiting" | "psychology" | "skillea" | "productCode">("skillea");
+
+  const activePos = NODE_POSITIONS.find((n) => n.id === activeNodeId) || NODE_POSITIONS[2];
+  const activeDetail = t.nodeGraph.nodes[activeNodeId];
 
   return (
     <div className="relative w-full max-w-4xl mx-auto rounded-3xl p-1 bg-gradient-to-b from-white/15 via-white/5 to-white/0 shadow-[0_20px_70px_rgba(0,0,0,0.8)]">
@@ -93,17 +65,17 @@ export default function HeroWidget() {
           <div className="flex items-center gap-2.5">
             <div className="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-mono text-xs">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>SKILLS & DOMAIN MAP</span>
+              <span>{t.nodeGraph.title}</span>
             </div>
             <span className="text-xs text-zinc-400 font-mono hidden sm:inline">
-              // Psychology • Talent • Product Journey
+              {t.nodeGraph.subtitle}
             </span>
           </div>
 
           <div className="flex items-center gap-4 text-xs font-mono text-zinc-400">
             <span className="flex items-center gap-1.5">
               <Activity className="w-3.5 h-3.5 text-cyan-400" />
-              <span>Status: Active & Learning</span>
+              <span>{t.nodeGraph.status}</span>
             </span>
           </div>
         </div>
@@ -140,17 +112,19 @@ export default function HeroWidget() {
           </svg>
 
           {/* Interactive Nodes */}
-          {NODES.map((node) => {
-            const isSelected = activeNodeId === node.id;
-            const Icon = node.icon;
+          {NODE_POSITIONS.map((pos) => {
+            const isSelected = activeNodeId === pos.id;
+            const Icon = pos.icon;
+            const nodeData = t.nodeGraph.nodes[pos.id];
+
             return (
               <button
-                key={node.id}
-                onClick={() => setActiveNodeId(node.id)}
+                key={pos.id}
+                onClick={() => setActiveNodeId(pos.id)}
                 className={`group absolute -translate-x-1/2 -translate-y-1/2 flex flex-col items-center p-2 rounded-2xl transition-all duration-300 focus:outline-none z-10 ${
                   isSelected ? "scale-110 z-20" : "scale-100 hover:scale-105 opacity-85 hover:opacity-100"
                 }`}
-                style={{ left: `${node.x}%`, top: `${node.y}%` }}
+                style={{ left: `${pos.x}%`, top: `${pos.y}%` }}
               >
                 <div
                   className={`relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-2xl transition-all duration-300 ${
@@ -159,23 +133,23 @@ export default function HeroWidget() {
                       : "border border-white/20 bg-zinc-900/90 hover:border-white/40"
                   }`}
                   style={{
-                    backgroundColor: isSelected ? `${node.color}25` : "#111622",
-                    borderColor: isSelected ? node.color : "rgba(255,255,255,0.15)",
-                    boxShadow: isSelected ? `0 0 25px ${node.color}66` : undefined,
+                    backgroundColor: isSelected ? `${pos.color}25` : "#111622",
+                    borderColor: isSelected ? pos.color : "rgba(255,255,255,0.15)",
+                    boxShadow: isSelected ? `0 0 25px ${pos.color}66` : undefined,
                   }}
                 >
                   <Icon
                     className="w-5 h-5 sm:w-6 sm:h-6 transition-transform group-hover:scale-110"
-                    style={{ color: isSelected ? node.color : "#d1d5db" }}
+                    style={{ color: isSelected ? pos.color : "#d1d5db" }}
                   />
                   <span
                     className="absolute -top-1 -right-1 w-3 h-3 rounded-full border-2 border-[#0c1018]"
-                    style={{ backgroundColor: node.color }}
+                    style={{ backgroundColor: pos.color }}
                   />
                 </div>
 
-                <div className="mt-1.5 px-2.5 py-0.5 rounded-full bg-black/70 border border-white/10 text-[10px] sm:text-xs font-mono font-medium text-white shadow-md text-center whitespace-nowrap">
-                  {node.title}
+                <div className="mt-1.5 px-2.5 py-0.5 rounded-full bg-black/70 border border-white/10 text-[10px] sm:text-xs font-mono font-medium text-white shadow-md text-center whitespace-nowrap max-w-[150px] truncate">
+                  {nodeData.title}
                 </div>
               </button>
             );
@@ -184,9 +158,9 @@ export default function HeroWidget() {
           <div
             className="absolute w-44 h-44 rounded-full blur-3xl pointer-events-none transition-all duration-500 opacity-40 -translate-x-1/2 -translate-y-1/2"
             style={{
-              left: `${activeNode.x}%`,
-              top: `${activeNode.y}%`,
-              backgroundColor: activeNode.color,
+              left: `${activePos.x}%`,
+              top: `${activePos.y}%`,
+              backgroundColor: activePos.color,
             }}
           />
         </div>
@@ -198,61 +172,30 @@ export default function HeroWidget() {
               <span 
                 className="px-2 py-0.5 rounded text-[11px] font-mono font-semibold"
                 style={{
-                  backgroundColor: `${activeNode.color}20`,
-                  color: activeNode.color,
-                  border: `1px solid ${activeNode.color}40`,
+                  backgroundColor: `${activePos.color}20`,
+                  color: activePos.color,
+                  border: `1px solid ${activePos.color}40`,
                 }}
               >
-                {nodeStatusLabel(activeNode.status)}
-              </span>
-              <span className="text-xs font-mono text-zinc-400">
-                // {activeNode.level}
+                {activeDetail.badge}
               </span>
             </div>
-            <h4 className="text-base sm:text-lg font-semibold text-white flex items-center gap-2">
-              <span>{activeNode.title}</span>
-              <span className="text-xs font-mono text-emerald-400 font-normal">
-                [{activeNode.metric}]
-              </span>
+            <h4 className="text-base sm:text-lg font-semibold text-white">
+              {activeDetail.title}
             </h4>
             <p className="text-xs sm:text-sm text-zinc-300 leading-relaxed">
-              {activeNode.description}
+              {activeDetail.desc}
             </p>
           </div>
 
           <div className="flex items-center gap-3 w-full md:w-auto justify-end">
             <span className="text-[11px] font-mono text-zinc-400">
-              Click nodes to view detail
+              {t.nodeGraph.clickPrompt}
             </span>
-          </div>
-        </div>
-
-        {/* 3 Honest Metrics */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-5 mt-5 border-t border-white/10 text-left">
-          <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-cyan-500/30 transition-colors">
-            <div className="text-2xl font-bold font-mono text-cyan-400">5+ Years</div>
-            <div className="text-xs text-zinc-300 font-medium mt-0.5">Technical Recruiting</div>
-            <div className="text-[11px] text-zinc-400 mt-1">Sourcing & placing developers for Canadian & US tech teams</div>
-          </div>
-
-          <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-emerald-500/30 transition-colors">
-            <div className="text-2xl font-bold font-mono text-emerald-400">UCV Graduate</div>
-            <div className="text-xs text-zinc-300 font-medium mt-0.5">Clinical Psychology</div>
-            <div className="text-[11px] text-zinc-400 mt-1">Behavioral assessment, communication & team dynamics</div>
-          </div>
-
-          <div className="p-3 rounded-xl bg-white/[0.02] border border-white/5 hover:border-violet-500/30 transition-colors">
-            <div className="text-2xl font-bold font-mono text-violet-400">Co-Founder</div>
-            <div className="text-xs text-zinc-300 font-medium mt-0.5">Product Exploration @ Skillea</div>
-            <div className="text-[11px] text-zinc-400 mt-1">Concepting the Progress Tree & learning modern web tech</div>
           </div>
         </div>
 
       </div>
     </div>
   );
-}
-
-function nodeStatusLabel(status: string) {
-  return status;
 }
